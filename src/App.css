@@ -237,7 +237,7 @@ button:hover {
     font-size: 24px; /* adjust font size for smaller screens */
   }
   .connect-wallet-btn {
-    margin-top: 40px; /* add margin to push the button down */
+    font-size: 20px; /* add margin to push the button down */
   }
 }
 
