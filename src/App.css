@@ -234,19 +234,19 @@ button:hover {
 
 @media (max-width: 480px) {
   .connect-wallet-btn {
-    font-size: 6px;
+    font-size: 8px;
     top: 2px;
-    right: 52px;
+    right: 10px;
     padding: 5px 10px;
   }
   .connect-wallet {
     font-size: 5px;
     margin-top: 0px;
     top: 50px;
-    right: 50px;
+    right: 10px;
   }
   header {
-    font-size: 20px;
+    font-size: 22px;
   }
   .price {
     font-size: 18px;
