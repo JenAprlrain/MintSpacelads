@@ -233,11 +233,16 @@ button:hover {
 
 
 @media (max-width: 480px) {
-  header {
-    font-size: 24px; /* adjust font size for smaller screens */
-  }
   .connect-wallet-btn {
-    font-size: 20px; /* add margin to push the button down */
+    font-size: 20px;
+    margin-top: 40px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .moving-images img {
+    width: 30px;
+    height: 30px;
   }
 }
 
