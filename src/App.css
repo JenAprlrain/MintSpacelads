@@ -234,15 +234,52 @@ button:hover {
 
 @media (max-width: 480px) {
   .connect-wallet-btn {
-    font-size: 16px;
-    margin-top: 100px;
+    font-size: 6px;
+    top: 2px;
+    right: 52px;
+    padding: 5px 10px;
   }
+  .connect-wallet {
+    font-size: 5px;
+    margin-top: 0px;
+    top: 50px;
+    right: 50px;
+  }
+  header {
+    font-size: 20px;
+  }
+  .price {
+    font-size: 18px;
+  }
+  .total {
+    font-size: 10px;
+  }
+  label {
+    font-size: 12px;
+  }
+  input {
+    font-size: 10px;
+    padding: 5px;
+  }
+  button {
+    font-size: 10px;
+  }
+  .nft-image {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+}
 }
 
 @media screen and (max-width: 600px) {
   .moving-images img {
     width: 60px;
     height: 60px;
+  }
+  .view-btn {
+    font-size: 12px;
+    padding: 5px 10px;
+    margin-top: 1px;
   }
 }
 
