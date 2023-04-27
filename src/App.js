@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Web3 from 'web3';
 import './App.css';
 import NFTABI from './contracts/NFTABI.json';
@@ -172,6 +174,9 @@ function App() {
     window.location.reload();
   }
 
+  const navigate = useNavigate();
+
+
   return (
     <div className="App">
       <header>SPACELADS</header>
@@ -179,6 +184,9 @@ function App() {
       <button onClick={handleConnectWallet} className="connect-wallet-btn">
         Connect Wallet
       </button>
+      <div className= "back-to-base">
+      <button className= "base-button" style={{ position: "absolute", top: "3px", left: "30px" }} onClick={() => navigate("/staking")}>STAKE SPACELADS</button>
+      </div>
       <div className="connect-wallet">
         <p>Connected Account: {account && `${account.slice(0, 6)}...${account.slice(-4)}`}</p>
       </div>
