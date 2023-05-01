@@ -24,6 +24,10 @@ function StakingPage() {
   const [numStaked, setNumStaked] = useState(0);
   const [StakedNftImages, setStakedNFTImages] = useState([]);
   const [selectedStakedNFTs, setSelectedStakedNFTs] = useState([]);
+  const [earnedTokens, setEarnedTokens] = useState(0);
+  const [stakedNFTCount, setStakedNFTCount] = useState(0);
+  const [ladsBalance, setLadsBalance] = useState(0);
+
 
  
 
@@ -146,6 +150,7 @@ function StakingPage() {
       const tokenIds = selectedNFTs.map(id => parseInt(id));
       const receipt = await stakingContract.methods.stake(tokenIds).send({ from: accounts[0], gas: 5000000 });
       setSelectedNFTs([]);
+      window.location.reload();
     }
   }
 
@@ -171,11 +176,61 @@ function StakingPage() {
         const receipt = await stakingContract.methods.unstake(tokenIds).send({ from: accounts[0], gas: 5000000 });
         setSelectedStakedNFTs([]);
         await getStakedNFTs(); // Update the staked NFTs after unstaking
+        window.location.reload();
       }
     } catch (error) {
       console.error('Error unstaking NFTs:', error);
     }
   }
+  
+  useEffect(() => {
+    async function fetchEarnedTokens() {
+      if (stakingContract && accounts.length > 0) {
+        const stakedNFTIds = await stakingContract.methods.tokensOfOwner(accounts[0]).call();
+        const rawEarnedTokens = await stakingContract.methods.earningInfo(accounts[0], stakedNFTIds).call();
+        const earnedTokens = Number(Web3.utils.fromWei(rawEarnedTokens[0].toString(), 'ether')).toFixed(4);
+        setEarnedTokens(earnedTokens);
+        console.log('Tokens Earned:', earnedTokens);
+      }
+    }
+  
+    fetchEarnedTokens();
+  }, [stakingContract, accounts, stakedNFTs]);
+
+  
+  useEffect(() => {
+    async function fetchStakedNFTCount() {
+      if (stakingContract && accounts.length > 0) {
+        const stakedNFTIds = await stakingContract.methods.tokensOfOwner(accounts[0]).call();
+        const count = stakedNFTIds.length;
+        setStakedNFTCount(count);
+      }
+    }
+  
+    fetchStakedNFTCount();
+  }, [stakingContract, accounts]);  
+
+  async function claimRewards() {
+    if (stakingContract && accounts.length > 0) {
+      const stakedNFTIds = await stakingContract.methods.tokensOfOwner(accounts[0]).call();
+      await stakingContract.methods.claim(stakedNFTIds).send({ from: accounts[0] });
+      window.location.reload();
+    }
+  }
+
+  useEffect(() => {
+    async function fetchLadsBalance() {
+      if (tokenContract && accounts.length > 0) {
+        const balance = await tokenContract.methods.balanceOf(accounts[0]).call();
+        const roundedBalance = Number(balance) / 10**18; // Convert balance from wei to $LADS
+        const formattedBalance = roundedBalance.toFixed(4); // Round to 4 decimal places
+        setLadsBalance(formattedBalance);
+      }
+    }
+  
+    fetchLadsBalance();
+  }, [tokenContract, accounts]);
+  
   
   
   async function enable() {
@@ -198,9 +253,9 @@ function StakingPage() {
       <div style={{position: 'relative'}}>
         <div className="staking-container">
           <div className="stake-info">
-            <p>Staked SpaceLads: {stakedNFTs.length > 0 ? stakedNFTs.join(", ") : "None"}</p>
-            <p>Total Mined:  $LADS</p>
-            <p>Last claimed: </p>
+            <p>Staked SpaceLads: {stakedNFTCount}</p>
+            <p>Total Earned: {earnedTokens} $LADS</p>
+            <p>$LADS Balance: {ladsBalance}</p>
           </div>
           <br></br>
           <br></br>
@@ -210,8 +265,8 @@ function StakingPage() {
           <div className="stake-buttons">
             {accounts.length > 0 ? (
               <>
-                <button onClick={() => handleStake(selectedNFTs)}>Stake selected Aliens</button>
-                <button onClick={() => unstakeNFTs(selectedStakedNFTs)}> Unstake selected Aliens</button>
+                <button onClick={() => handleStake(selectedNFTs)}>Stake selected SpaceLads</button>
+                <button onClick={() => unstakeNFTs(selectedStakedNFTs)}> Unstake selected SpaceLads</button>
               </>
             ) : (
               <button onClick={() => handleConnectWallet()}>Connect wallet</button>
@@ -219,7 +274,7 @@ function StakingPage() {
           </div>
         </div>
         <div className="claim-rewards">
-          <button>Claim rewards</button>
+        <button onClick={claimRewards}>Claim Rewards</button>
         </div>
         <div className="nft-container1">
   <div className="inventory-title">Staked SpaceLads</div>

@@ -354,6 +354,7 @@ button:hover {
   border: 3px solid white;
   border-radius: 10px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
 }
 
 .nft-image1 {
@@ -445,7 +446,7 @@ button:hover {
 
 .claim-rewards {
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 6%;
 }
 
