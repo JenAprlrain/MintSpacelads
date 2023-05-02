@@ -3,12 +3,10 @@ import { useNavigate } from "react-router-dom";
 import Web3 from "web3";
 import './App.js';
 import './App.css';
-import planet1 from './images/planet1.png';
-import consoleImage from './images/console.gif';
 import NFTABI from './contracts/NFTABI.json';
 import stakingABI from './contracts/stakingABI.json';
 import ZonkABI from './contracts/ZonkABI.json';
-import Logo1 from './images/Planet Rymoth.png';
+import ufo from './images/ufo.gif';
 
 function StakingPage() {
   const [web3, setWeb3] = useState(null);
@@ -236,20 +234,24 @@ function StakingPage() {
   async function enable() {
     nftContract.methods.setApprovalForAll(stakingAddress, true).send({ from: accounts[0] });
   }
-
+ 
   return (
     <div className="staking-page">
         <header>SPACELADS STAKING</header>
-        <button onClick= {enable} className= "base-button" style={{ position: "absolute", top: "60px", left: "800px" }}>Enable Staking</button>
+        <button onClick= {enable} className= "enable-button">Enable Staking</button>
+        <div className="connect-wallet">
+        <p>Connected Account: {accounts[0] && `${accounts[0].slice(0, 6)}...${accounts[0].slice(-4)}`}</p>
+        <div className="ufo-image">
+        <img src={ufo} alt="ufo" style={{ width: "100%"}} />
+        </div>
+      </div>
         <div className="enable-info">
       <p>You Must First Enable Staking The First Time You Stake With Your Wallet</p>
       </div>
       <br></br>
       <br></br>
       <br></br>
-      <div className= "back-to-base">
-      <button className= "base-button" style={{ position: "absolute", top: "3px", left: "30px" }} onClick={() => navigate("/")}>Back to Base</button>
-      </div>
+      <button className= "base-button" onClick={() => navigate("/")}>Back to Base</button>
       <div style={{position: 'relative'}}>
         <div className="staking-container">
           <div className="stake-info">

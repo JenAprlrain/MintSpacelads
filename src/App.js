@@ -97,18 +97,21 @@ function App() {
     const onlyWhitelisted = false; // Set this value based on your contract
     const preSaleCost = 0.2; // Set this value based on your contract
     const cost = 0.5; // Set this value based on your contract
-   // Calculate the amount of Ether required based on the selected quantity
-  const _mintAmount = quantity;
-  const requiredAmount = onlyWhitelisted ? preSaleCost * _mintAmount : cost * _mintAmount;
-
+    
+    // Calculate the amount of Ether required based on the selected quantity
+    const _mintAmount = numNFTs;
+    const requiredAmount = onlyWhitelisted ? preSaleCost * _mintAmount : cost * _mintAmount;
+  
     // Convert the required amount to Wei
     const payableAmount = web3.utils.toWei(requiredAmount.toString(), "ether");
-
+  
     try {
       const tokenIdsToMint = [];
-      for (let i = 0; i < quantity; i++) {
-        const mintResult = await contract.methods.mint(quantity).send({
-          from: account,value: payableAmount,gas: 3000000,
+      for (let i = 0; i < numNFTs; i++) {
+        const mintResult = await contract.methods.mint(1).send({
+          from: account,
+          value: payableAmount,
+          gas: 3000000,
         });
         const mintedTokenId = mintResult.events.Transfer.returnValues.tokenId;
         tokenIdsToMint.push(mintedTokenId);
@@ -118,6 +121,7 @@ function App() {
       console.error(error);
     }
   };
+  
 
   useEffect(() => {
     console.log("starting get total supply");
@@ -181,12 +185,8 @@ function App() {
     <div className="App">
       <header>SPACELADS</header>
       <img src={ufo} alt="ufo" style={{ width: "10%"}} />
-      <button onClick={handleConnectWallet} className="connect-wallet-btn">
-        Connect Wallet
-      </button>
-      <div className= "back-to-base">
-      <button className= "base-button" style={{ position: "absolute", top: "3px", left: "30px" }} onClick={() => navigate("/staking")}>STAKE SPACELADS</button>
-      </div>
+      <button onClick={handleConnectWallet} className="connect-wallet-btn">Connect Wallet</button>
+      <button className= "tostake-button"  onClick={() => navigate("/staking")}>STAKE SPACELADS</button>
       <div className="connect-wallet">
         <p>Connected Account: {account && `${account.slice(0, 6)}...${account.slice(-4)}`}</p>
       </div>
@@ -208,18 +208,18 @@ function App() {
           <p> {totalSupply} / {maxSupply} minted</p>
         </div>
         <div className="selector">
-          <div className="selector-label">
-            <label htmlFor="num-nfts">Number of NFTs to mint:</label>
-          </div>
-          <input
-            type="number"
-            id="num-nfts"
-            value={numNFTs}
-            onChange={handleNumNFTsChange}
-            min={1}
-            max={666}
-          />
-        </div>
+  <div className="selector-label">
+    <label htmlFor="num-nfts">Number of NFTs to mint:</label>
+  </div>
+  <input
+    type="number"
+    id="num-nfts"
+    value={numNFTs}
+    onChange={handleNumNFTsChange}
+    min={1}
+    max={666}
+  />
+</div>
         <button onClick={handleMint}>Mint</button>
       </div>
       <br></br>

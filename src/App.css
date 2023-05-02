@@ -77,19 +77,6 @@ input {
   margin-bottom: 10px;
 }
 
-button {
-  font-size: 32px;
-  background-color: #202020;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  margin-top: 20px;
-  z-index: 3;
-}
-
 button:hover {
   background-color: #3a3838;
 }
@@ -232,58 +219,6 @@ button:hover {
 }
 
 
-@media (max-width: 480px) {
-  .connect-wallet-btn {
-    font-size: 8px;
-    top: 2px;
-    right: 10px;
-    padding: 5px 10px;
-  }
-  .connect-wallet {
-    font-size: 5px;
-    margin-top: 0px;
-    top: 50px;
-    right: 10px;
-  }
-  header {
-    font-size: 22px;
-  }
-  .price {
-    font-size: 18px;
-  }
-  .total {
-    font-size: 10px;
-  }
-  label {
-    font-size: 12px;
-  }
-  input {
-    font-size: 10px;
-    padding: 5px;
-  }
-  button {
-    font-size: 10px;
-  }
-  .nft-image {
-  width: 200px;
-  height: 200px;
-  margin: 10px;
-}
-}
-
-@media screen and (max-width: 600px) {
-  .moving-images img {
-    width: 60px;
-    height: 60px;
-  }
-  .view-btn {
-    font-size: 12px;
-    padding: 5px 10px;
-    margin-top: 1px;
-  }
-}
-
-
 .planet1logo {
   position: absolute;
   top: 15%;
@@ -301,26 +236,17 @@ button:hover {
   color: white;
 }
 
-.planet1 {
+.ufo-image {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 30%;
+  top: -100px;
+  right: 55px;
+  width: 50%;
 }
 
-.back-to-base {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  text-align: left;
-  z-index: 1000;
-  width: 200px;
-}
-
-.base-button {
-  font-size: 20px;
-  background-color: white;
-  color: black;
+button {
+  font-size: 32px;
+  background-color: #202020;
+  color: #fff;
   border: none;
   border-radius: 5px;
   padding: 10px 20px;
@@ -328,6 +254,47 @@ button:hover {
   cursor: pointer;
   margin-top: 20px;
   z-index: 3;
+}
+
+.base-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 3;
+}
+
+.tostake-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 3;
+}
+
+.enable-button {
+  position: absolute;
+  top: 60px;
+  left: 43%;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 3;
+  
 }
 
 .nft-images1 {
@@ -396,16 +363,15 @@ button:hover {
 .inventory-title {
   position: absolute;
   top: -40px;
-  left: 50%;
-  transform: translateX(-50%);
   font-size: 30px;
   color: white;
+  width:auto
 }
 
 .stake-info {
   position: absolute;
-  top: 60%;
-  left: 3%;
+  top: 5%;
+  right: 85%;
   font-size: 1.2vw;
   text-align: center;
   color: white;
@@ -413,7 +379,7 @@ button:hover {
 
 .enable-info {
   position: absolute;
-  top: 16%;
+  top: 20%;
   left: 30%;
   font-size: 1.2vw;
   text-align: center;
@@ -446,8 +412,8 @@ button:hover {
 
 .claim-rewards {
   position: absolute;
-  top: 55%;
-  left: 6%;
+  top: 1%;
+  left: 4%;
 }
 
 .claim-rewards button {
@@ -460,4 +426,165 @@ button:hover {
 
 .claim-rewards button:hover {
   background-color: #3a3838;
+}
+
+@media (max-width: 480px) {
+  .connect-wallet-btn {
+    font-size: 8px;
+    top: 2px;
+    right: 10px;
+    padding: 5px 10px;
+  }
+  .connect-wallet {
+    font-size: 5px;
+    margin-top: 0px;
+    top: 50px;
+    right: 10px;
+  }
+  header {
+    font-size: 22px;
+  }
+  p {
+    font-size: 10px;
+  }
+  .price {
+    font-size: 18px;
+  }
+  .total {
+    font-size: 10px;
+  }
+  label {
+    font-size: 12px;
+  }
+  input {
+    font-size: 10px;
+    padding: 5px;
+  }
+  .nft-image {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+}
+ .tostake-button {
+  font-size: 8px;
+  margin-top: 1px;
+  padding: 5px 10px;
+  width: 70px;
+}
+.base-button {
+  font-size: 6px;
+  margin-top: 1px;
+  left: 7px;
+  padding: 5px 10px;
+  width: 60px;
+  top:30px;
+}
+.enable-button {
+  font-size: 8px;
+  margin-top: 1px;
+  top: 110px;
+  left: 60%;
+  padding: 5px 10px;
+  width: 100px;
+}
+.stake-buttons button {
+  font-size: 10px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  background-color: white;
+  color:black;
+}
+.claim-rewards button {
+  font-size: 6px;
+  margin-top: 1px;
+  left: 1px;
+  padding: 5px 10px;
+  text-align: center;
+}
+.claim-rewards {
+  position: absolute;
+  top: -53px;
+  left: 23%;
+  width:100px
+}
+.inventory-title {
+  font-size: 20px;
+}
+.stake-info {
+  top: -18px;
+  left: -12px;
+  width: 200px;
+}
+.enable-info {
+  position: absolute;
+  top: 120px;
+  left: 30px;
+  font-size: 1.2vw;
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+}
+.ufo-image {
+  position: absolute;
+  top: -40px;
+  right: 10px;
+  width: 50%;
+}
+.nft-image {
+  width: 100px;
+  height: 100px;
+  margin: 8px;
+}
+.nft-image1 {
+  width: 50px;
+  height: 50px;
+  margin: auto;
+}
+.nft-card1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 50px;
+  height: 75px;
+  margin: 5px;
+  padding: 10px;
+  background-color: #1c1c1c;
+  border: 3px solid white;
+  border-radius: 10px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+.nft-name1 {
+  font-size: 8px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+.nft-container1 {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 50px auto;
+  width: 90%;
+  max-width: 1000px;
+  position: relative;
+  border: 3px solid white;
+  border-radius: 10px;
+  padding: 3px;
+  min-height: 75px;
+}
+}
+
+@media screen and (max-width: 600px) {
+  .moving-images img {
+    width: 60px;
+    height: 60px;
+  }
+  .view-btn {
+    font-size: 12px;
+    padding: 5px 10px;
+    margin-top: 1px;
+  }
 }
