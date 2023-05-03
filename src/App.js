@@ -108,7 +108,7 @@ function App() {
     try {
       const tokenIdsToMint = [];
       for (let i = 0; i < numNFTs; i++) {
-        const mintResult = await contract.methods.mint(1).send({
+        const mintResult = await contract.methods.mint(numNFTs).send({
           from: account,
           value: payableAmount,
           gas: 3000000,
