@@ -246,7 +246,7 @@ function StakingPage() {
         </div>
       </div>
         <div className="enable-info">
-      <p>You Must First Enable Staking The First Time You Stake With Your Wallet</p>
+      <p>You Must Enable Staking The First Time You Stake With Your Wallet</p>
       </div>
       <br></br>
       <br></br>
